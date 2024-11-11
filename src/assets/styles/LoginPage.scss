@@ -1,0 +1,60 @@
+// src/assets/styles/LoginPage.scss
+body{
+  overflow: hidden;
+}
+.login-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  
+  .welcome-title {
+    font-size: 2rem;
+    color: #4caf50; // Cor verde padrão do projeto
+    margin-bottom: 20px;
+    text-align: center;
+  }
+
+  .login-card {
+    width: 100%;
+    max-width: 400px;
+    padding: 20px;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+    .form-label {
+      font-weight: bold;
+      color: #333;
+    }
+
+    .form-control {
+      border-radius: 5px;
+    }
+
+    .forgot-password-link {
+      color: #007bff; // Azul para o link de "Esqueceu sua senha?"
+      text-decoration: none;
+      font-size: 0.9rem;
+    }
+
+    .forgot-password-link:hover {
+      color: #0056b3;
+      text-decoration: underline;
+    }
+
+    button[type="submit"] {
+      background-color: #4caf50; // Cor verde padrão para o botão
+      color: white;
+      border: none;
+      font-weight: bold;
+      font-size: 1rem;
+      border-radius: 5px;
+    }
+
+    button[type="submit"]:hover {
+      background-color: #388e3c; // Tom mais escuro de verde para o hover
+    }
+  }
+}

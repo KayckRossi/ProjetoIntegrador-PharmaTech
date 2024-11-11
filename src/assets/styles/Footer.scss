@@ -1,0 +1,61 @@
+// src/assets/styles/Footer.scss
+
+.footer-custom {
+  background-color: #4caf50; // Verde principal do projeto
+  color: white;
+  padding: 40px 0;
+  font-size: 0.9rem;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+
+  .footer-col {
+    margin-bottom: 20px;
+
+    h5 {
+      font-size: 1.2rem;
+      margin-bottom: 15px;
+      color: #ffffff;
+    }
+
+    p {
+      color: #f1f1f1;
+    }
+  }
+
+  .footer-links {
+    list-style: none;
+    padding: 0;
+
+    li {
+      margin-bottom: 10px;
+
+      a {
+        color: #ffffff;
+        text-decoration: none;
+        transition: color 0.3s;
+
+        &:hover {
+          color: #007bff; // Azul para destaque ao passar o mouse
+        }
+      }
+    }
+  }
+
+  .text-center {
+    text-align: center;
+  }
+
+  .text-right {
+    text-align: right;
+  }
+
+  .mt-3 {
+    margin-top: 20px;
+  }
+
+  p {
+    margin: 0;
+    color: #f1f1f1;
+  }
+}
