@@ -9,7 +9,7 @@ function ProductList() {
 
     const fetchProducts = async () => {
       try {
-        const response = await fetch('http://localhost:8080/api/products'); 
+        const response = await fetch('http://localhost:8080/api/produtos'); 
         const data = await response.json();
         setProducts(data);
       } catch (error) {
@@ -26,10 +26,12 @@ function ProductList() {
         {products.map((product) => (
           <Col md={3} key={product.id} className="mb-4">
             <Card className="product-card">
-              <Card.Img variant="top" src={product.image} alt={product.name} />
+              <Card.Img variant="top" src={product.imagemUrl} alt={product.name} />
               <Card.Body>
-                <Card.Title>{product.name}</Card.Title>
-                <Card.Text>{product.description}</Card.Text>
+                <Card.Title>{product.nome}</Card.Title>
+                <Card.Text>{product.descricao}</Card.Text>
+                <Card.Text> {product.marca}</Card.Text>
+                <Card.Text><storage> R$</storage> {product.preco}</Card.Text>
                 <Button variant="success">+</Button>
               </Card.Body>
             </Card>
