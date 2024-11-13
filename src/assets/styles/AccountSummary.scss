@@ -1,5 +1,3 @@
-// src/assets/styles/AccountSummary.scss
-
 .account-summary-page {
   margin-top: 30px;
   .account-summary-title {
@@ -66,4 +64,9 @@
       border-color: #5a6268;
     }
   }
+}
+
+.footer-custom {
+  position: static;
+  margin-top: 40px;
 }
