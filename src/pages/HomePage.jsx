@@ -7,8 +7,12 @@ import ProductList from '../components/ProductList';
 
 function HomePage() {
   return (
+
+  
     <Container fluid className="home-page">
 
+  <div style={{ marginBottom: '120px' }}></div>
+  
       {/* Botões de Informações */}
       <Row className="info-buttons mt-4">
         <Col md={3} className="text-center">

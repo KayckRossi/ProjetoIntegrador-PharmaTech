@@ -1,0 +1,25 @@
+.account-dashboard {
+  padding-top: 80px; /* Ajuste do padding para evitar ser escondido pelo header */
+  background-color: #ffffff;
+  min-height: calc(100vh - 60px); /* Ajuste para evitar o espaço em cima */
+}
+
+.account-sidebar-container {
+  padding: 0;
+  border-right: 1px solid #e9ecef;
+  margin-top: -20px;
+}
+
+.account-content {
+  padding: 20px;
+}
+
+@media (max-width: 768px) {
+  .account-sidebar {
+    height: auto;
+  }
+  .account-sidebar-container {
+    border-right: none;
+    border-bottom: 1px solid #e9ecef;
+  }
+}

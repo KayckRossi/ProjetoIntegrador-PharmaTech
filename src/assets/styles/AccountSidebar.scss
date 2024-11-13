@@ -1,0 +1,33 @@
+.account-sidebar {
+  background-color: #f8f9fa;
+  height: calc(100vh - 60px); /* Encostando o menu no topo */
+  padding: 1px; /* Reduzindo o padding para diminuir a largura da sidebar */
+  border-right: 1px solid #e9ecef;
+  margin-top: 0; /* Removendo o espaço para evitar o header fixo */
+}
+
+.account-sidebar .nav-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+  color: #333;
+  font-weight: 500;
+  transition: color 0.3s, background-color 0.3s;
+  border-bottom: 1px solid #000; /* Linha preta dividindo cada opção */
+  padding: 10px;
+}
+
+.account-sidebar .nav-item:hover {
+  color: #007bff;
+  background-color: #f0f0f0; /* Cor leve ao passar o mouse */
+}
+
+.account-sidebar .nav-icon {
+  margin-right: 10px;
+  font-size: 1.2rem;
+  transition: color 0.3s;
+}
+
+.account-sidebar .nav-item:hover .nav-icon {
+  color: #007bff;
+}

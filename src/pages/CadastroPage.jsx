@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { Button, Card, Col, Container, Form, Row } from 'react-bootstrap';
-import { FaEnvelope, FaIdCard, FaLock, FaPhone, FaUser } from 'react-icons/fa';
+import { FaEnvelope, FaIdCard, FaLock, FaMapMarkerAlt, FaPhone, FaUser } from 'react-icons/fa';
 import '../assets/styles/CadastroPage.scss';
 
 function CadastroPage() {
@@ -71,13 +71,13 @@ function CadastroPage() {
                 </Form.Group>
               </Col>
 
-              {/* Gênero */}
+              {/* Endereço */}
               <Col md={6}>
-                <Form.Group controlId="formGenero" className="mb-3">
-                  <Form.Label>Gênero</Form.Label>
-                  <div className="gender-options">
-                    <Form.Check inline type="radio" name="genero" label="Masculino" />
-                    <Form.Check inline type="radio" name="genero" label="Feminino" />
+                <Form.Group controlId="formEndereco" className="mb-3">
+                  <Form.Label>Endereço</Form.Label>
+                  <div className="input-icon">
+                    <FaMapMarkerAlt className="input-icon-prefix" />
+                    <Form.Control type="text" placeholder="Rua, número, bairro, cidade" />
                   </div>
                 </Form.Group>
               </Col>
@@ -125,4 +125,4 @@ function CadastroPage() {
   );
 }
 
-export default CadastroPage;
+export default CadastroPage; 

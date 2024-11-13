@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { Button, Card, Container, Form } from 'react-bootstrap';
-import '../assets/styles/LoginPage.scss';
+import '../assets/styles/';
 
 function LoginPage() {
   return (
