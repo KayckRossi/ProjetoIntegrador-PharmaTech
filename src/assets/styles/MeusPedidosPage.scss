@@ -1,0 +1,48 @@
+// src/assets/styles/MeusPedidosPage.scss
+
+.meus-pedidos {
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+}
+
+h2 {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #333;
+}
+
+.table {
+  margin-top: 20px;
+}
+
+.table thead th {
+  background-color: #4caf50;
+  color: #ffffff;
+  font-weight: bold;
+}
+
+.table tbody tr {
+  transition: background-color 0.3s;
+}
+
+.table tbody tr:hover {
+  background-color: #e6ffe6;
+}
+
+.pagination {
+  margin-top: 20px;
+}
+
+.pagination .page-item.active .page-link {
+  background-color: #4caf50;
+  border-color: #4caf50;
+}
+
+.pagination .page-link {
+  color: #4caf50;
+}
+
+.pagination .page-link:hover {
+  background-color: #e6ffe6;
+}

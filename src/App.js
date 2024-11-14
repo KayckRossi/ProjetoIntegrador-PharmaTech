@@ -6,6 +6,7 @@ import AccountSummary from './pages/AccountSummary';
 import CadastroPage from './pages/CadastroPage';
 import { default as HomePage } from './pages/HomePage';
 import LoginPage from './pages/LoginPage';
+import MeusPedidos from './pages/MeusPedidosPage';
 function App() {
   return (
     <Router>
@@ -18,6 +19,7 @@ function App() {
         <Route path="/login" element={<LoginPage />} /> 
         <Route path="/cadastro" element={<CadastroPage />} />
         <Route path="/resumo" element={<AccountSummary />} />
+        <Route path="/meus-pedidos" element={<MeusPedidos />} />
       </Routes>
 
         <Footer />
