@@ -29,7 +29,6 @@ function ProductList() {
               <Card.Img variant="top" src={product.imagemUrl} alt={product.name} />
               <Card.Body>
                 <Card.Title>{product.nome}</Card.Title>
-                <Card.Text>{product.descricao}</Card.Text>
                 <Card.Text> {product.marca}</Card.Text>
                 <Card.Text><storage> R$</storage> {product.preco}</Card.Text>
                 <Button variant="success">+</Button>
