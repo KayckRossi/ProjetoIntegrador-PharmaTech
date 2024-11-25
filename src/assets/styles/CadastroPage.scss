@@ -80,4 +80,39 @@
       text-decoration: underline;
     }
   }
+
+  .input-icon {
+    position: relative;
+    
+    .input-icon-prefix {
+      position: absolute;
+      left: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #6c757d; // cor do ícone
+    }
+  
+    input {
+      padding-left: 2.5rem; // Ajusta o espaço para o ícone dentro do campo
+    }
+  
+    .is-invalid + .input-icon-prefix {
+      top: 40%; // Ajusta o alinhamento vertical do ícone para quando há um erro
+    }
+  
+    .form-control.is-invalid {
+      border-color: #dc3545;
+    }
+  
+    .form-control:focus {
+      box-shadow: none;
+    }
+  
+    .invalid-feedback {
+      display: block;
+      font-size: 0.875rem;
+      color: #dc3545; // cor do feedback de erro
+      margin-top: 0.25rem;
+    }
+  }
 }
