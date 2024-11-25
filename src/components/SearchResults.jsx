@@ -2,6 +2,8 @@
 
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import { Card, Container, Row, Col, Button } from 'react-bootstrap';
+import '../assets/styles/ProductList.scss'; 
 
 function SearchResults() {
   const { term } = useParams();
@@ -22,17 +24,32 @@ function SearchResults() {
   }, [term]);
 
   return (
-    <div>
-      <h4>Resultados da busca para: {term}</h4>
-      {produtosEncontrados.map((produto) => (
-        <div key={produto.id} className="produto-item">
-          <h5>{produto.nome}</h5>
-          <p>{produto.descricao}</p>
-          <p>Preço: R$ {produto.preco}</p>
-        </div>
-      ))}
-    </div>
+    <Container>
+      <h4>Resultados da busca para: <strong>{term}</strong></h4>
+      <Row>
+        {produtosEncontrados.map((product) => (
+          <Col md={3} key={product.id} className="mb-4">
+            <Card>
+              <Card.Img
+                variant="top"
+                src={`data:image/png;base64,${product.imagemProduto}`} // Mostrando a imagem como Base64
+                alt={product.name}
+              />
+              <Card.Body>
+                <Card.Title className='text-center'>{product.nome}</Card.Title>
+                <Card.Text className='text-center'>{product.marca}</Card.Text>
+                <Card.Text className='text-center'><storage> R$</storage> {product.preco}</Card.Text>
+                <div className='d-flex justify-content-center'>
+                  <Button variant="success">+</Button>
+                </div >
+              </Card.Body>
+            </Card>
+          </Col>
+        ))}
+      </Row>
+    </Container>
   );
+
 }
 
 export default SearchResults;

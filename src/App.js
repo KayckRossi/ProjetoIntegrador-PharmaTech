@@ -21,7 +21,7 @@ function App() {
         <Route path="/cadastro" element={<CadastroPage />} />
         <Route path="/resumo" element={<AccountSummary />} />
         <Route path="/meus-pedidos" element={<MeusPedidos />} />
-        <Route path="/buscar" element={<SearchResults />}></Route>
+        <Route path="/buscar/:term" element={<SearchResults />}></Route>
       </Routes>
 
       <Footer />
