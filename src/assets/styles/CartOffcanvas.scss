@@ -1,7 +1,6 @@
-// src/assets/styles/CartOffcanvas.scss
-
 .cart-body {
   padding: 20px;
+  background-color: #ffffff; /* Fundo branco */
 }
 
 .cart-item {
@@ -9,7 +8,7 @@
   justify-content: space-between;
   align-items: center;
   margin-bottom: 15px;
-  border-bottom: 1px solid #f1f1f1;
+  border-bottom: 1px solid #e0e0e0; /* Cor suave para a linha */
   padding-bottom: 10px;
 }
 
@@ -23,6 +22,7 @@
   height: 80px;
   object-fit: cover;
   margin-right: 15px;
+  border-radius: 5px; /* Imagens arredondadas */
 }
 
 .cart-item-info {
@@ -32,12 +32,13 @@
 .cart-item-info h5 {
   font-size: 1rem;
   margin: 0;
-  color: #333;
+  color: #333; /* Texto escuro */
+  font-weight: 500;
 }
 
 .cart-item-info p {
   margin: 5px 0 0;
-  color: #4caf50; /* Cor do projeto para o preço */
+  color: #4caf50; /* Verde para o preço */
   font-weight: bold;
 }
 
@@ -45,8 +46,28 @@
   width: 60px;
 }
 
+.cart-item-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.cart-item-actions button {
+  background-color: #b71c1c; /* Vermelho para a lixeira */
+  border: none;
+  color: white;
+  border-radius: 5px;
+  padding: 5px;
+  font-size: 0.9rem;
+}
+
+.cart-item-actions button:hover {
+  background-color: #d32f2f; /* Vermelho claro no hover */
+}
+
 .cart-footer {
-  border-top: 1px solid #f1f1f1;
+  border-top: 1px solid #e0e0e0;
   padding-top: 20px;
 }
 
@@ -55,24 +76,52 @@
   justify-content: space-between;
   margin-bottom: 20px;
   font-size: 1.2rem;
+  color: #333; /* Texto escuro para o subtotal */
 }
 
 .btn-success {
-  background-color: #4caf50;
+  background-color: #4caf50; /* Verde do projeto */
   border-color: #4caf50;
+  font-weight: bold;
+  border-radius: 25px; /* Botão arredondado */
+}
+
+.btn-success:hover {
+  background-color: #388e3c; /* Verde mais escuro no hover */
+  border-color: #388e3c;
 }
 
 .btn-outline-success {
-  color: #4caf50;
+  color: #4caf50; /* Verde do projeto */
   border-color: #4caf50;
+  font-weight: bold;
+  border-radius: 25px;
 }
 
 .btn-outline-success:hover {
-  background-color: #4caf50;
-  color: white;
+  background-color: #e8f5e9; /* Fundo verde claro no hover */
+  color: #4caf50;
 }
 
 .offcanvas-title {
   font-weight: bold;
-  color: #4caf50;
+  color: #4caf50; /* Verde do projeto */
+  font-size: 1.5rem;
+  text-align: center; /* Centraliza o título */
+}
+
+.list-group-item {
+  border: none; /* Remove bordas nos itens */
+}
+
+button.delete-btn {
+  background-color: #b71c1c; /* Vermelho para a lixeira */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 5px;
+}
+
+button.delete-btn:hover {
+  background-color: #d32f2f; /* Vermelho claro no hover */
 }

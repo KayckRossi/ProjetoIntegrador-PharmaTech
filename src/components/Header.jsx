@@ -1,18 +1,18 @@
-// src/components/Header.jsx
-
 import { useNavigate } from 'react-router-dom';
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { Button, Container, Form, FormControl, Nav, Navbar, NavDropdown } from 'react-bootstrap';
 import { FaRegListAlt, FaShoppingCart, FaThLarge, FaUser } from 'react-icons/fa';
 import '../assets/styles/Header.scss';
 import CartOffcanvas from './CartOffCanvas';
 import LoginOffcanvas from './LoginOffcanvas';
+import { CartContext } from '../context/CartContext'; // Importe o contexto do carrinho
 
 function Header() {
   const [showLoginOffcanvas, setShowLoginOffcanvas] = useState(false);
   const [showCartOffcanvas, setShowCartOffcanvas] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
 
+  const { cartItems, calculateSubtotal } = useContext(CartContext); // Pegue os itens e subtotal do contexto
   const navigate = useNavigate();
 
   // Funções para controle do Offcanvas
@@ -28,6 +28,9 @@ function Header() {
       navigate(`/buscar/${searchTerm}`);
     }
   };
+
+  // Quantidade total de itens no carrinho
+  const totalItems = cartItems.reduce((acc, item) => acc + item.quantidade, 0);
 
   return (
     <>
@@ -74,8 +77,14 @@ function Header() {
 
             {/* Carrinho */}
             <Nav.Link as="div" className="nav-item" onClick={handleCartOffcanvasShow} style={{ cursor: 'pointer' }}>
-              <FaShoppingCart className="nav-icon" />
-              <span>Carrinho</span>
+              <div style={{ display: 'flex', alignItems: 'center' }}>
+                <FaShoppingCart className="nav-icon" />
+                <div style={{ marginLeft: '5px' }}>
+                  <span style={{ fontSize: '0.9rem' }}>Carrinho</span>
+                  <br />
+                  <span style={{ fontSize: '0.8rem' }}>R$ {calculateSubtotal().toFixed(2)} ({totalItems})</span>
+                </div>
+              </div>
             </Nav.Link>
           </Nav>
         </Container>

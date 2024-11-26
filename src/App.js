@@ -3,6 +3,7 @@ import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 import Footer from './components/Footer';
 import Header from './components/Header';
 import { AuthProvider } from './context/AuthContext';
+import { CartProvider } from './context/CartContext';
 import AccountSummary from './pages/AccountSummary';
 import CadastroPage from './pages/CadastroPage';
 import { default as HomePage } from './pages/HomePage';
@@ -13,24 +14,26 @@ import CategoriaProdutos from './components/CategoriaProdutos';
 function App() {
   return (
     <AuthProvider>
-      <Router>
-        {/* Cabeçalho do aplicativo */}
-        <Header />
+      <CartProvider>
+        <Router>
+          {/* Cabeçalho do aplicativo */}
+          <Header />
 
-        {/* Definindo as Rotas */}
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/login" element={<LoginPage />} />
-          <Route path="/cadastro" element={<CadastroPage />} />
-          <Route path="/resumo" element={<AccountSummary />} />
-          <Route path="/meus-pedidos" element={<MeusPedidos />} />
-          <Route path="/buscar/:term" element={<SearchResults />}></Route>
-          <Route path="/categoria/:categoria" element={<CategoriaProdutos />} />
-        </Routes>
+          {/* Definindo as Rotas */}
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/login" element={<LoginPage />} />
+            <Route path="/cadastro" element={<CadastroPage />} />
+            <Route path="/resumo" element={<AccountSummary />} />
+            <Route path="/meus-pedidos" element={<MeusPedidos />} />
+            <Route path="/buscar/:term" element={<SearchResults />}></Route>
+            <Route path="/categoria/:categoria" element={<CategoriaProdutos />} />
+          </Routes>
 
-        <Footer />
-      </Router>
-    </AuthProvider>  
+          <Footer />
+        </Router>
+      </CartProvider>
+    </AuthProvider>
   );
 }
 
