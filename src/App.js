@@ -2,30 +2,35 @@ import React from 'react';
 import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 import Footer from './components/Footer';
 import Header from './components/Header';
+import { AuthProvider } from './context/AuthContext';
 import AccountSummary from './pages/AccountSummary';
 import CadastroPage from './pages/CadastroPage';
 import { default as HomePage } from './pages/HomePage';
 import LoginPage from './pages/LoginPage';
 import MeusPedidos from './pages/MeusPedidosPage';
 import SearchResults from './components/SearchResults';
+import CategoriaProdutos from './components/CategoriaProdutos';
 function App() {
   return (
-    <Router>
-      {/* Cabeçalho do aplicativo */}
-      <Header />
+    <AuthProvider>
+      <Router>
+        {/* Cabeçalho do aplicativo */}
+        <Header />
 
-      {/* Definindo as Rotas */}
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/cadastro" element={<CadastroPage />} />
-        <Route path="/resumo" element={<AccountSummary />} />
-        <Route path="/meus-pedidos" element={<MeusPedidos />} />
-        <Route path="/buscar/:term" element={<SearchResults />}></Route>
-      </Routes>
+        {/* Definindo as Rotas */}
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/cadastro" element={<CadastroPage />} />
+          <Route path="/resumo" element={<AccountSummary />} />
+          <Route path="/meus-pedidos" element={<MeusPedidos />} />
+          <Route path="/buscar/:term" element={<SearchResults />}></Route>
+          <Route path="/categoria/:categoria" element={<CategoriaProdutos />} />
+        </Routes>
 
-      <Footer />
-    </Router>
+        <Footer />
+      </Router>
+    </AuthProvider>  
   );
 }
 

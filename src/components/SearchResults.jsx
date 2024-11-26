@@ -24,24 +24,22 @@ function SearchResults() {
   }, [term]);
 
   return (
-    <Container>
+    <Container className='product-list'>
       <h4>Resultados da busca para: <strong>{term}</strong></h4>
       <Row>
         {produtosEncontrados.map((product) => (
           <Col md={3} key={product.id} className="mb-4">
-            <Card>
+            <Card className='product-card'>
               <Card.Img
                 variant="top"
                 src={`data:image/png;base64,${product.imagemProduto}`} // Mostrando a imagem como Base64
                 alt={product.name}
               />
               <Card.Body>
-                <Card.Title className='text-center'>{product.nome}</Card.Title>
-                <Card.Text className='text-center'>{product.marca}</Card.Text>
-                <Card.Text className='text-center'><storage> R$</storage> {product.preco}</Card.Text>
-                <div className='d-flex justify-content-center'>
+                <Card.Title>{product.nome}</Card.Title>
+                <Card.Text>{product.marca}</Card.Text>
+                <Card.Text><storage> R$</storage> {product.preco}</Card.Text>
                   <Button variant="success">+</Button>
-                </div >
               </Card.Body>
             </Card>
           </Col>

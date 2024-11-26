@@ -1,48 +1,49 @@
-// src/assets/styles/MeusPedidosPage.scss
+// Estilo para o estado de não autenticação
+.not-authenticated {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 70vh; /* Ajusta o tamanho para centralizar */
+  text-align: center;
 
-.meus-pedidos {
-  padding: 20px;
-  background-color: #f9f9f9;
-  border-radius: 8px;
-}
+  .card {
+    max-width: 400px;
+    width: 100%;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    border: none;
+  }
 
-h2 {
-  font-size: 1.8rem;
-  font-weight: bold;
-  color: #333;
-}
+  .card-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #333;
+  }
 
-.table {
-  margin-top: 20px;
-}
+  .card-text {
+    font-size: 1rem;
+    color: #666;
+    margin: 10px 0 20px;
+  }
 
-.table thead th {
-  background-color: #4caf50;
-  color: #ffffff;
-  font-weight: bold;
-}
+  .btn-danger {
+    background-color: #4caf50;
+    border-color: #4caf50;
+    font-weight: bold;
+    padding: 10px 20px;
+    border-radius: 25px;
+    transition: background-color 0.3s;
+  }
 
-.table tbody tr {
-  transition: background-color 0.3s;
-}
+  .btn-danger:hover {
+    background-color: #4caf50;
+    border-color: #4caf50;
+  }
 
-.table tbody tr:hover {
-  background-color: #e6ffe6;
-}
-
-.pagination {
-  margin-top: 20px;
-}
-
-.pagination .page-item.active .page-link {
-  background-color: #4caf50;
-  border-color: #4caf50;
-}
-
-.pagination .page-link {
-  color: #4caf50;
-}
-
-.pagination .page-link:hover {
-  background-color: #e6ffe6;
+  .card-img {
+    width: 120px;
+    height: 120px;
+    margin: 0 auto 15px;
+  }
 }

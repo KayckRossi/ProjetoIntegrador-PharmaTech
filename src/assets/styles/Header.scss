@@ -1,13 +1,24 @@
-// src/assets/styles/Header.scss
-
 .navbar-custom {
-  background-color: #4caf50; /* Verde */
+  background-color: #4caf50; /* Verde principal */
   color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 0;
+
+  .navbar-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 1200px;
+  }
 
   .navbar-brand {
     color: white !important;
     font-size: 1.5rem;
     font-weight: bold;
+    margin-right: 20px;
   }
 
   .navbar-nav .nav-link {
@@ -27,7 +38,6 @@
   .nav-icon {
     margin-right: 5px;
     font-size: 1.25rem;
-    transition: color 0.3s;
   }
 
   /* Efeito Hover nos Ícones e Textos */
@@ -36,28 +46,83 @@
   }
 
   .search-form {
-    width: 50%;
-    margin: 0 auto;
+    width: 40%;
     display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #ffffff;
+    border-radius: 25px;
+    padding: 5px 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 
     .form-control {
-      border-radius: 20px;
+      border: none;
+      border-radius: 25px;
+      padding: 8px 12px;
+      box-shadow: none;
+      flex-grow: 1;
+      outline: none;
     }
 
     button {
-      border-radius: 20px;
+      border: none;
+      border-radius: 25px;
       background-color: #007bff; /* Azul */
       color: white;
+      font-weight: bold;
+      padding: 8px 15px;
+      transition: background-color 0.3s;
+      margin-left: 10px;
     }
 
     button:hover {
       background-color: #0056b3; /* Azul escuro */
     }
   }
+
+  .nav-icons {
+    display: flex;
+    align-items: center;
+
+    .nav-item {
+      display: flex;
+      align-items: center;
+      margin-left: 15px;
+      font-size: 1rem;
+      color: white;
+      transition: color 0.3s;
+
+      &:hover {
+        color: #f1f1f1;
+      }
+
+      .nav-icon {
+        font-size: 1.25rem;
+        margin-right: 5px;
+      }
+    }
+  }
 }
 
 @media (max-width: 768px) {
+  .navbar-container {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
   .search-form {
-    width: 100%;
+    width: 90%;
+    margin: 10px 0;
+  }
+
+  .nav-icons {
+    flex-direction: column;
+    margin-top: 10px;
+
+    .nav-item {
+      margin-left: 0;
+      margin-bottom: 10px;
+    }
   }
 }
