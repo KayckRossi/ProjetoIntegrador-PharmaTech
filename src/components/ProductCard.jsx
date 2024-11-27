@@ -11,7 +11,7 @@ function ProductCard({ product }) {
 
   return (
     <Card className="product-card">
-      <Card.Img variant="top" src={product.image} alt={product.name} />
+      <Card.Img variant="top" src={product.imagemUrl} alt={product.name} />
       <Card.Body className="text-center">
         <Card.Title>{product.name}</Card.Title>
         <Card.Text>R$ {product.price.toFixed(2)}</Card.Text>

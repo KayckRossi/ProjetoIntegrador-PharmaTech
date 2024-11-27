@@ -70,6 +70,9 @@ function Header() {
               <NavDropdown.Item onClick={() => navigate('/categoria/beleza')}>
                 Beleza
               </NavDropdown.Item>
+              <NavDropdown.Item onClick={() => navigate('/categoria/medicamentos')}>
+                Medicamentos
+              </NavDropdown.Item>
             </NavDropdown>
 
             {/* Meus Pedidos */}
