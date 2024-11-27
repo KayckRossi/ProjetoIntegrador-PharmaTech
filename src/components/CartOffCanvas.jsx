@@ -2,12 +2,8 @@ import React, { useContext } from 'react';
 import { Button, Form, Image, ListGroup, Offcanvas } from 'react-bootstrap';
 import imageSemPedido from '../assets/images/imageDoOffCanvas.png';
 import '../assets/styles/CartOffcanvas.scss';
-<<<<<<< HEAD
 import { useNavigate } from 'react-router-dom';
-
-=======
 import { CartContext } from '../context/CartContext'; // Certifique-se de que o contexto do carrinho está configurado
->>>>>>> 9818623b690d79a157ecb08afd1fe70395fd333b
 function CartOffcanvas({ show, handleClose }) {
   const { cartItems, removeFromCart, updateQuantity, calculateSubtotal } = useContext(CartContext); // Usa o contexto do carrinho
   const navigate = useNavigate();
