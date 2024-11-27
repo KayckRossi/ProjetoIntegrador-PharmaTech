@@ -4,12 +4,15 @@ import React, { useState } from 'react';
 import { Button, Card, Container, Form } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import '../assets/styles/LoginPage.scss';
+import { useAuth } from '../context/AuthContext';
 
 function LoginPage() {
   const [formData, setFormData] = useState({
     emailCpf: '',
     senha: '',
   });
+
+  const { login } = useAuth();
 
   const [errors, setErrors] = useState({});
   const navigate = useNavigate();

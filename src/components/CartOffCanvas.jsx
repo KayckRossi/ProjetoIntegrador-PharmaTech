@@ -2,12 +2,14 @@ import React, { useContext } from 'react';
 import { Button, Form, Image, ListGroup, Offcanvas } from 'react-bootstrap';
 import { CartContext } from '../context/CartContext'; // Certifique-se de que o contexto do carrinho está configurado
 import '../assets/styles/CartOffcanvas.scss';
+import { useNavigate } from 'react-router-dom';
 
 function CartOffcanvas({ show, handleClose }) {
   const { cartItems, removeFromCart, updateQuantity, calculateSubtotal } = useContext(CartContext); // Usa o contexto do carrinho
+  const navigate = useNavigate();
 
   return (
-    <Offcanvas show={show} onHide={handleClose} placement="end">
+    <Offcanvas show={show} onHide={handleClose} placement="end" animation>
       <Offcanvas.Header closeButton>
         <Offcanvas.Title>Cesta ({cartItems.length} itens)</Offcanvas.Title>
       </Offcanvas.Header>
@@ -47,10 +49,10 @@ function CartOffcanvas({ show, handleClose }) {
             <strong>Subtotal</strong>
             <span>R$ {calculateSubtotal().toFixed(2)}</span>
           </div>
-          <Button variant="success" className="w-100 mb-2">
-            Ir para cesta
+          <Button variant="success" className="w-100 mb-2" onClick={() => {handleClose(); navigate("/checkout/cart");}}>
+            Ir para carrinho
           </Button>
-          <Button variant="outline-success" className="w-100">
+          <Button variant="outline-success" className="w-100" onClick={handleClose}>
             Continuar comprando
           </Button>
         </div>

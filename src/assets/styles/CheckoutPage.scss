@@ -1,0 +1,63 @@
+// src/assets/styles/CheckoutPage.scss
+
+.checkout-page {
+    h2 {
+      color: #4caf50;
+      margin-bottom: 20px;
+    }
+  
+    .checkout-table {
+      thead {
+        background-color: #4caf50;
+        color: white;
+  
+        th {
+          text-align: left;
+          padding: 10px;
+        }
+      }
+  
+      tbody {
+        tr {
+          border-bottom: 1px solid #f1f1f1;
+  
+          .product-details {
+            display: flex;
+            align-items: center;
+  
+            .product-image {
+              width: 80px;
+              height: 80px;
+              object-fit: cover;
+              margin-right: 15px;
+            }
+          }
+        }
+      }
+    }
+  
+    .checkout-summary {
+      margin-top: 20px;
+  
+      .total {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+  
+        h3 {
+          color: #4caf50;
+        }
+      }
+    }
+  
+    .checkout-actions {
+      margin-top: 30px;
+      display: flex;
+      justify-content: flex-end;
+  
+      .btn {
+        padding: 10px 20px;
+      }
+    }
+  }
+  
