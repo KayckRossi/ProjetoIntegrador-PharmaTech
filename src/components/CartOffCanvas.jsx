@@ -1,9 +1,13 @@
 import React, { useContext } from 'react';
 import { Button, Form, Image, ListGroup, Offcanvas } from 'react-bootstrap';
-import { CartContext } from '../context/CartContext'; // Certifique-se de que o contexto do carrinho está configurado
+import imageSemPedido from '../assets/images/imageDoOffCanvas.png';
 import '../assets/styles/CartOffcanvas.scss';
+<<<<<<< HEAD
 import { useNavigate } from 'react-router-dom';
 
+=======
+import { CartContext } from '../context/CartContext'; // Certifique-se de que o contexto do carrinho está configurado
+>>>>>>> 9818623b690d79a157ecb08afd1fe70395fd333b
 function CartOffcanvas({ show, handleClose }) {
   const { cartItems, removeFromCart, updateQuantity, calculateSubtotal } = useContext(CartContext); // Usa o contexto do carrinho
   const navigate = useNavigate();
@@ -18,7 +22,7 @@ function CartOffcanvas({ show, handleClose }) {
           {cartItems.map((item) => (
             <ListGroup.Item key={item.id} className="cart-item">
               <div className="cart-item-details">
-                <Image src={item.imagemUrl} rounded className="cart-item-image" />
+                <Image src={imageSemPedido} rounded className="cart-item-image" />
                 <div className="cart-item-info">
                   <h5>{item.nome}</h5>
                   <p>R$ {item.preco.toFixed(2)}</p>

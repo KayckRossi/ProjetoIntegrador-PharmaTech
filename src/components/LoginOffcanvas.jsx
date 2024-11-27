@@ -7,28 +7,46 @@ import welcomeImage from '../assets/images/imageDoOffCanvas.png';
 import '../assets/styles/LoginOffcanvas.scss';
 
 function LoginOffcanvas({ show, handleClose }) {
-  const navigate = useNavigate(); // Hook para navegação
+  const navigate = useNavigate();
 
   const handleLoginClick = () => {
-    handleClose(); // Fechar o offcanvas antes de navegar
-    navigate('/login'); // Navegar para a página de login
+    handleClose();
+    navigate('/login');
   };
 
   const handleRegisterClick = () => {
-    handleClose(); // Fechar o offcanvas antes de navegar
-    navigate('/cadastro'); // Navegar para a página de cadastro
+    handleClose();
+    navigate('/cadastro');
   };
 
   return (
     <Offcanvas show={show} onHide={handleClose} placement="end">
       <Offcanvas.Header closeButton />
-      <Offcanvas.Body className="text-center">
-        <Image src={welcomeImage} rounded className="mb-4" style={{ width: '300px' }} />
-        <h5>Seja bem-vindo, entre agora com a sua conta PharmaTech</h5>
-        <Button variant="success" className="w-100 my-3" onClick={handleLoginClick}>
+      <Offcanvas.Body className="d-flex flex-column justify-content-center align-items-center text-center">
+        {/* Imagem */}
+        <Image
+          src={welcomeImage}
+          alt="Bem-vindo"
+          className="mb-4"
+          style={{ maxWidth: '80%', height: 'auto' }}
+        />
+        {/* Texto de boas-vindas */}
+        <h5 className="mb-4">
+          Seja bem-vindo, entre agora com a sua conta PharmaTech
+        </h5>
+        {/* Botões */}
+        <Button
+          variant="success"
+          className="w-100 mb-3"
+          onClick={handleLoginClick}
+        >
           Entrar na minha conta
         </Button>
-        <Button variant="outline-success" className="w-100" onClick={handleRegisterClick}>
+        <Button
+          variant="outline-success"
+          className="w-100"
+          onClick={handleRegisterClick}
+        >
           Criar um novo cadastro
         </Button>
       </Offcanvas.Body>
