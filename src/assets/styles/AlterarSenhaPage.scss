@@ -1,0 +1,79 @@
+.alterar-senha-container {
+  display: flex;
+}
+
+.alterar-senha-content {
+  padding: 30px;
+}
+
+.alterar-senha-title {
+  font-weight: bold;
+  font-size: 1.8em;
+  color: #004085; // Cor padrão do projeto
+}
+
+.alterar-senha-subtitle {
+  color: #6c757d;
+  margin-bottom: 1.5rem;
+}
+
+.alterar-senha-card {
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border: none;
+}
+
+.alterar-senha-btn {
+  background-color: #004085; // Cor padrão do projeto
+  border: none;
+
+  &:hover {
+    background-color: #003366; // Tom mais escuro ao passar o mouse
+  }
+}
+
+.voltar-link {
+  color: #004085; // Cor padrão do projeto
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.dicas-senha-col {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.dicas-senha-card {
+  width: 100%;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border: none;
+}
+
+.dicas-senha-title {
+  font-size: 1.5em;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.dicas-senha-list {
+  list-style: none;
+  padding-left: 0;
+
+  li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+
+    &:before {
+      content: '🔒';
+      margin-right: 10px;
+    }
+  }
+}

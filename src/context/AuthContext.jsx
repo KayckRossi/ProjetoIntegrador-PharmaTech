@@ -1,20 +1,20 @@
 // src/context/AuthContext.jsx
-import React, { createContext, useState, useContext } from 'react';
+import React, { createContext, useContext, useState } from 'react';
 
 const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState(null); // Estado para armazenar os dados do usuário
 
   const login = (userData) => {
     setIsAuthenticated(true);
-    setUser(userData);
+    setUser(userData); // Salva os dados do usuário no estado
   };
 
   const logout = () => {
     setIsAuthenticated(false);
-    setUser(null);
+    setUser(null); // Remove os dados do usuário no logout
   };
 
   return (
@@ -24,5 +24,6 @@ export const AuthProvider = ({ children }) => {
   );
 };
 
-export const useAuth = () => useContext(AuthContext);
+export const useAuth = () => useContext(AuthContext); // Hook para usar o AuthContext
 export { AuthContext };
+
