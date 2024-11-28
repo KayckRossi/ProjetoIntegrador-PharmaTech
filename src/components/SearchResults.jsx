@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { Card, Container, Row, Col, Button } from 'react-bootstrap';
+import { Card, Container, Row, Col, Button, Alert } from 'react-bootstrap';
 import '../assets/styles/ProductList.scss'; 
 import { useCart } from '../context/CartContext'; // Importa o contexto do carrinho
 
@@ -28,6 +28,13 @@ function SearchResults() {
   return (
     <Container className='product-list'>
       <h4>Resultados da busca para: <strong>{term}</strong></h4>
+
+      {produtosEncontrados.length === 0 && (
+        <Alert variant="warning">
+          Nenhum produto encontrado com esse nome
+        </Alert>
+      )}
+      
       <Row>
         {produtosEncontrados.map((product) => (
           <Col md={3} key={product.id} className="mb-4">

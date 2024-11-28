@@ -34,6 +34,7 @@ function App() {
             <Route path="/buscar/:term" element={<SearchResults />}></Route>
             <Route path="/categoria/:categoria" element={<CategoriaProdutos />} />
             <Route path="/checkout/cart" element={<CheckoutPage />} />
+
           </Routes>
 
           <Footer />
