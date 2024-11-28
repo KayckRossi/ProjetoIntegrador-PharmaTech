@@ -1,8 +1,7 @@
-// src/components/AccountSummary.jsx
-
 import React, { useState } from 'react';
 import { Button, Card, Col, Container, Form, Row } from 'react-bootstrap';
 import { FaEnvelope, FaHome, FaIdCard, FaPhone } from 'react-icons/fa';
+import Swal from 'sweetalert2';
 import '../assets/styles/AccountSummary.scss';
 import AccountDashboard from '../components/AccountDashboard';
 import { useAuth } from '../context/AuthContext'; // Importar AuthContext
@@ -30,16 +29,27 @@ function AccountSummary() {
       if (response.ok) {
         const data = await response.json();
         login(data); // Atualiza os dados no contexto de autenticação
-        console.log('Dados atualizados:', data);
+        Swal.fire({
+          icon: 'success',
+          title: 'Informações atualizadas com sucesso!',
+          confirmButtonColor: '#004085', // Cor padrão do projeto
+        });
         setIsEditing(false);
-        alert('Informações atualizadas com sucesso!');
       } else {
-        console.error('Erro ao atualizar as informações:', response.status);
-        alert('Erro ao atualizar as informações. Por favor, tente novamente.');
+        Swal.fire({
+          icon: 'error',
+          title: 'Erro ao atualizar as informações',
+          text: 'Por favor, tente novamente.',
+          confirmButtonColor: '#004085',
+        });
       }
     } catch (error) {
-      console.error('Erro ao atualizar as informações:', error);
-      alert('Erro ao atualizar as informações. Por favor, tente novamente.');
+      Swal.fire({
+        icon: 'error',
+        title: 'Erro ao atualizar as informações',
+        text: 'Por favor, tente novamente.',
+        confirmButtonColor: '#004085',
+      });
     }
   };
 

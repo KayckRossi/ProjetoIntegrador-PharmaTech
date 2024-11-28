@@ -1,25 +1,93 @@
-// src/pages/CheckoutPage.jsx
-
 import React, { useContext } from "react";
 import { Button, Container, Form, Table } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
-import { CartContext } from "../context/CartContext";
+import Swal from 'sweetalert2';
 import "../assets/styles/CheckoutPage.scss";
 import { useAuth } from '../context/AuthContext';
+import { CartContext } from "../context/CartContext";
 
 function CheckoutPage() {
   const { cartItems, updateQuantity, calculateSubtotal } = useContext(CartContext);
   const navigate = useNavigate();
-  const { isAuthenticated } = useAuth();
+  const { isAuthenticated, user } = useAuth();
 
-  const handleFinalizarCompra = () => {
-
+  const handleFinalizarCompra = async () => {
     if (!isAuthenticated) {
-        navigate('/login')
+      navigate('/login');
     } else {
-        alert('Compra finalizada com sucesso!');
+      const { value: formValues } = await Swal.fire({
+        title: 'Finalizar Compra',
+        html:
+          `<div>
+            <label>Endereço:</label>
+            <input id="swal-input1" class="swal2-input" value="${user.endereco}" disabled>
+          </div>
+          <div>
+            <label>Forma de Pagamento:</label>
+            <select id="swal-input2" class="swal2-input">
+              <option value="Cartão de Crédito">Cartão de Crédito</option>
+              <option value="Boleto Bancário">Boleto Bancário</option>
+              <option value="Pix">Pix</option>
+            </select>
+          </div>`,
+        focusConfirm: false,
+        preConfirm: () => {
+          return {
+            endereco: document.getElementById('swal-input1').value,
+            formaPagamento: document.getElementById('swal-input2').value,
+          };
+        },
+        confirmButtonColor: '#004085',
+        confirmButtonText: 'Confirmar Compra'
+      });
+
+      if (formValues) {
+        try {
+          const response = await fetch('http://localhost:8080/api/pedidos', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              clienteId: user.id,
+              produtos: cartItems.map((item) => ({
+                produtoId: item.id,
+                quantidade: item.quantidade,
+              })),
+              endereco: formValues.endereco,
+              formaPagamento: formValues.formaPagamento,
+              valorTotal: calculateSubtotal(),
+            }),
+          });
+
+          if (response.ok) {
+            Swal.fire({
+              icon: 'success',
+              title: 'Compra finalizada com sucesso!',
+              confirmButtonColor: '#004085',
+            }).then(() => {
+              navigate('/meus-pedidos');
+            });
+          } else {
+            Swal.fire({
+              icon: 'error',
+              title: 'Erro ao finalizar a compra',
+              text: 'Por favor, tente novamente.',
+              confirmButtonColor: '#004085',
+            });
+          }
+        } catch (error) {
+          console.error('Erro ao finalizar a compra:', error);
+          Swal.fire({
+            icon: 'error',
+            title: 'Erro ao finalizar a compra',
+            text: 'Por favor, tente novamente.',
+            confirmButtonColor: '#004085',
+          });
+        }
+      }
     }
-  }
+  };
 
   return (
     <Container className="checkout-page my-4">
@@ -79,7 +147,9 @@ function CheckoutPage() {
         >
           Continuar Comprando
         </Button>
-        <Button onClick={handleFinalizarCompra} className="success">Finalizar Compra</Button>
+        <Button onClick={handleFinalizarCompra} className="success">
+          Finalizar Compra
+        </Button>
       </div>
     </Container>
   );

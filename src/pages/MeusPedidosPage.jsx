@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
-import { Button, Container, Offcanvas, Table, Pagination } from 'react-bootstrap';
-import { useAuth } from '../context/AuthContext'; // Importa o contexto de autenticação
+import React, { useEffect, useState } from 'react';
+import { Button, Container, Offcanvas, Pagination, Table } from 'react-bootstrap';
 import '../assets/styles/MeusPedidosPage.scss';
+import { useAuth } from '../context/AuthContext'; // Importa o contexto de autenticação
 
 function MeusPedidosPage() {
   const { isAuthenticated } = useAuth(); // Verifica se o usuário está logado

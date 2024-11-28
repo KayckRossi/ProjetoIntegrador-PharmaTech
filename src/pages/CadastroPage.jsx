@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import { Button, Card, Col, Container, Form, Row } from 'react-bootstrap';
 import { FaEnvelope, FaIdCard, FaLock, FaMapMarkerAlt, FaPhone, FaUser } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2';
 import '../assets/styles/CadastroPage.scss';
 
 function CadastroPage() {
@@ -48,7 +49,6 @@ function CadastroPage() {
     }
 
     try {
-
       console.log('Dados enviados para o backend:', {
         nome: formData.nome,
         email: formData.email,
@@ -58,14 +58,14 @@ function CadastroPage() {
         endereco: formData.endereco,
         senha: formData.senha,
       });
-      
+
       const response = await fetch('http://localhost:8080/api/cadastro', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          nome: formData.nome, // Atualize aqui
+          nome: formData.nome,
           email: formData.email,
           cpf: formData.cpf,
           telefone: formData.telefone,
@@ -76,14 +76,29 @@ function CadastroPage() {
       });
 
       if (response.ok) {
-        alert('Usuário cadastrado com sucesso!');
-        navigate('/login');
+        Swal.fire({
+          icon: 'success',
+          title: 'Usuário cadastrado com sucesso!',
+          confirmButtonColor: '#004085',
+        }).then(() => {
+          navigate('/login');
+        });
       } else {
-        alert('Erro ao cadastrar usuário, tente novamente.');
+        Swal.fire({
+          icon: 'error',
+          title: 'Erro ao cadastrar usuário',
+          text: 'Por favor, tente novamente.',
+          confirmButtonColor: '#004085',
+        });
       }
     } catch (error) {
       console.error('Erro ao cadastrar usuário:', error);
-      alert('Erro ao cadastrar usuário, tente novamente.');
+      Swal.fire({
+        icon: 'error',
+        title: 'Erro ao cadastrar usuário',
+        text: 'Por favor, tente novamente.',
+        confirmButtonColor: '#004085',
+      });
     }
   };
 

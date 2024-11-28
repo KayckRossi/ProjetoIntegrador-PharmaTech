@@ -61,3 +61,16 @@
     }
   }
   
+  .checkout-page {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; // Garante que ocupe toda a altura da janela
+  }
+  
+  .checkout-summary {
+    margin-top: auto; // Deixa o resumo e o footer no fundo
+  }
+  
+  .checkout-actions {
+    margin-top: 1rem;
+  }

@@ -1,20 +1,34 @@
 // src/context/AuthContext.jsx
-import React, { createContext, useContext, useState } from 'react';
+
+import React, { createContext, useContext, useEffect, useState } from 'react';
 
 const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const [user, setUser] = useState(null); // Estado para armazenar os dados do usuário
+  const [user, setUser] = useState(null);
 
+  // Restaurar os dados do usuário a partir do localStorage ao carregar a página
+  useEffect(() => {
+    const storedUser = localStorage.getItem('user');
+    if (storedUser) {
+      setUser(JSON.parse(storedUser));
+      setIsAuthenticated(true);
+    }
+  }, []);
+
+  // Função para fazer login e salvar dados no estado e localStorage
   const login = (userData) => {
     setIsAuthenticated(true);
-    setUser(userData); // Salva os dados do usuário no estado
+    setUser(userData);
+    localStorage.setItem('user', JSON.stringify(userData));
   };
 
+  // Função para fazer logout e remover dados do estado e localStorage
   const logout = () => {
     setIsAuthenticated(false);
-    setUser(null); // Remove os dados do usuário no logout
+    setUser(null);
+    localStorage.removeItem('user');
   };
 
   return (
@@ -24,6 +38,4 @@ export const AuthProvider = ({ children }) => {
   );
 };
 
-export const useAuth = () => useContext(AuthContext); // Hook para usar o AuthContext
-export { AuthContext };
-
+export const useAuth = () => useContext(AuthContext);
