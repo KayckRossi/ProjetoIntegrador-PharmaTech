@@ -44,48 +44,69 @@ function LoginPage() {
     e.preventDefault();
 
     if (!validateForm()) {
-      return;
+        return;
     }
+
+    console.log('Dados do login:', formData); // Adicione este log para debug
 
     try {
-      const response = await fetch('http://localhost:8080/api/auth/login', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          emailCpf: formData.emailCpf,
-          senha: formData.senha,
-        }),
-      });
+        const response = await fetch('http://localhost:8080/api/login', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                email: formData.emailCpf.includes('@') ? formData.emailCpf : null,
+                cpf: !formData.emailCpf.includes('@') ? formData.emailCpf : null,
+                senha: formData.senha,
+            }),
+        });
 
-      if (response.ok) {
-        const data = await response.json();
-        login(data.user); // Salva os dados do usuário no AuthContext
-        Swal.fire({
-          icon: 'success',
-          title: 'Login bem-sucedido!',
-          confirmButtonColor: '#004085', // Cor padrão do projeto
-        });
-        navigate('/'); // Redireciona para a página inicial
-      } else {
-        Swal.fire({
-          icon: 'error',
-          title: 'Credenciais inválidas',
-          text: 'Verifique o email/CPF e senha e tente novamente.',
-          confirmButtonColor: '#004085', // Cor padrão do projeto
-        });
-      }
+        console.log('Resposta do backend:', response.status); // Adicione este log para verificar o status
+
+        if (response.ok) {
+            const data = await response.json();
+            console.log('Dados do usuário:', data); // Adicione este log para verificar os dados recebidos
+
+            // Verifique se todos os campos necessários estão preenchidos
+            if (data && data.id && data.nome && data.email) {
+                login(data); // Salva os dados do usuário no AuthContext
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Login bem-sucedido!',
+                    confirmButtonColor: '#004085', // Cor padrão do projeto
+                }).then(() => {
+                    setTimeout(() => {
+                        navigate('/'); // Redireciona para a página inicial após o delay
+                    }, 1500);
+                });
+            } else {
+                console.error('Dados incompletos do usuário:', data);
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Erro ao obter os dados do usuário',
+                    text: 'Os dados recebidos estão incompletos. Por favor, tente novamente.',
+                    confirmButtonColor: '#004085',
+                });
+            }
+        } else {
+            Swal.fire({
+                icon: 'error',
+                title: 'Credenciais inválidas',
+                text: 'Verifique o email/CPF e senha e tente novamente.',
+                confirmButtonColor: '#004085', // Cor padrão do projeto
+            });
+        }
     } catch (error) {
-      console.error('Erro ao autenticar usuário:', error);
-      Swal.fire({
-        icon: 'error',
-        title: 'Erro ao autenticar usuário',
-        text: 'Tente novamente.',
-        confirmButtonColor: '#004085', // Cor padrão do projeto
-      });
+        console.error('Erro ao autenticar usuário:', error);
+        Swal.fire({
+            icon: 'error',
+            title: 'Erro ao autenticar usuário',
+            text: 'Tente novamente.',
+            confirmButtonColor: '#004085', // Cor padrão do projeto
+        });
     }
-  };
+};
 
   const handleForgotPassword = () => {
     MySwal.fire({

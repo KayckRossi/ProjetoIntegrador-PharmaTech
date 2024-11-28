@@ -30,10 +30,10 @@ function Header() {
     }
   };
 
-  // Função para redirecionar ou abrir o modal de login para "Meus Pedidos"
-  const handleMeusPedidosClick = () => {
+  // Função para redirecionar para o resumo da conta
+  const handleAccountClick = () => {
     if (isAuthenticated) {
-      navigate('/meus-pedidos');
+      navigate('/resumo'); // Redireciona para a rota de resumo da conta
     } else {
       handleLoginOffcanvasShow(); // Mostrar o modal de login
     }
@@ -85,7 +85,7 @@ function Header() {
             </NavDropdown>
 
             {/* Meus Pedidos */}
-            <Nav.Link as="div" onClick={handleMeusPedidosClick} style={{ cursor: 'pointer' }}>
+            <Nav.Link as="div" onClick={handleAccountClick} style={{ cursor: 'pointer' }}>
               <FaRegListAlt className="nav-icon" />
               Meus Pedidos
             </Nav.Link>
@@ -94,7 +94,7 @@ function Header() {
             <Nav.Link
               as="div"
               className="nav-item"
-              onClick={!isAuthenticated ? handleLoginOffcanvasShow : null} // Abrir login apenas se não estiver autenticado
+              onClick={handleAccountClick} // Redirecionar ao clicar no nome do usuário
               style={{ cursor: 'pointer' }}
             >
               <FaUser className="nav-icon" />

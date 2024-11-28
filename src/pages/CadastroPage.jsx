@@ -8,7 +8,7 @@ import '../assets/styles/CadastroPage.scss';
 
 function CadastroPage() {
   const [formData, setFormData] = useState({
-    nomeCompleto: '',
+    nome: '',
     email: '',
     cpf: '',
     telefone: '',
@@ -17,6 +17,7 @@ function CadastroPage() {
     senha: '',
     confirmarSenha: ''
   });
+
   const [errors, setErrors] = useState({});
   const navigate = useNavigate();
 
@@ -27,7 +28,7 @@ function CadastroPage() {
 
   const validateForm = () => {
     const newErrors = {};
-    if (!formData.nomeCompleto) newErrors.nomeCompleto = 'Preencha o campo Nome Completo';
+    if (!formData.nome) newErrors.nome = 'Preencha o campo Nome Completo';
     if (!formData.email) newErrors.email = 'Preencha o campo E-mail';
     if (!formData.cpf) newErrors.cpf = 'Preencha o campo CPF';
     if (!formData.telefone) newErrors.telefone = 'Preencha o campo Telefone';
@@ -47,13 +48,24 @@ function CadastroPage() {
     }
 
     try {
+
+      console.log('Dados enviados para o backend:', {
+        nome: formData.nome,
+        email: formData.email,
+        cpf: formData.cpf,
+        telefone: formData.telefone,
+        dataNascimento: formData.dataNascimento,
+        endereco: formData.endereco,
+        senha: formData.senha,
+      });
+      
       const response = await fetch('http://localhost:8080/api/cadastro', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          nomeCompleto: formData.nomeCompleto,
+          nome: formData.nome, // Atualize aqui
           email: formData.email,
           cpf: formData.cpf,
           telefone: formData.telefone,
@@ -89,20 +101,20 @@ function CadastroPage() {
             <Row>
               {/* Nome Completo */}
               <Col md={6}>
-                <Form.Group controlId="formNomeCompleto" className="mb-3">
-                  <Form.Label>Nome Completo</Form.Label>
-                  <Form.Control 
-                    type="text" 
-                    placeholder="Ex.: Josefa Santos" 
-                    name="nomeCompleto" 
-                    value={formData.nomeCompleto} 
-                    onChange={handleInputChange} 
-                    isInvalid={!!errors.nomeCompleto}
-                  />
-                  <Form.Control.Feedback type="invalid">
-                    {errors.nomeCompleto}
-                  </Form.Control.Feedback>
-                </Form.Group>
+                      <Form.Group controlId="formNome" className="mb-3">
+          <Form.Label>Nome Completo</Form.Label>
+          <Form.Control 
+            type="text" 
+            placeholder="Ex.: Josefa Santos" 
+            name="nome" 
+            value={formData.nome} 
+            onChange={handleInputChange} 
+            isInvalid={!!errors.nome}
+          />
+          <Form.Control.Feedback type="invalid">
+            {errors.nome}
+          </Form.Control.Feedback>
+        </Form.Group>
               </Col>
 
               {/* E-mail */}

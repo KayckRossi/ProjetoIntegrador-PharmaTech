@@ -5,20 +5,42 @@ import { Button, Card, Col, Container, Form, Row } from 'react-bootstrap';
 import { FaEnvelope, FaHome, FaIdCard, FaPhone } from 'react-icons/fa';
 import '../assets/styles/AccountSummary.scss';
 import AccountDashboard from '../components/AccountDashboard';
+import { useAuth } from '../context/AuthContext'; // Importar AuthContext
 
-function AccountSummary({ userData = {} }) {
+function AccountSummary() {
+  const { user, login } = useAuth(); // Obter dados do usuário e função para atualizar no contexto
   const [isEditing, setIsEditing] = useState(false);
-  const [updatedData, setUpdatedData] = useState(userData);
+  const [updatedData, setUpdatedData] = useState(user || {});
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setUpdatedData((prevData) => ({ ...prevData, [name]: value }));
   };
 
-  const handleSave = () => {
-    // Aqui você pode fazer a integração com o backend para salvar as atualizações
-    console.log('Dados atualizados:', updatedData);
-    setIsEditing(false);
+  const handleSave = async () => {
+    try {
+      const response = await fetch(`http://localhost:8080/api/usuarios/${user.id}`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(updatedData),
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        login(data); // Atualiza os dados no contexto de autenticação
+        console.log('Dados atualizados:', data);
+        setIsEditing(false);
+        alert('Informações atualizadas com sucesso!');
+      } else {
+        console.error('Erro ao atualizar as informações:', response.status);
+        alert('Erro ao atualizar as informações. Por favor, tente novamente.');
+      }
+    } catch (error) {
+      console.error('Erro ao atualizar as informações:', error);
+      alert('Erro ao atualizar as informações. Por favor, tente novamente.');
+    }
   };
 
   return (
@@ -38,8 +60,8 @@ function AccountSummary({ userData = {} }) {
                     <Form.Label>Nome Completo</Form.Label>
                     <Form.Control
                       type="text"
-                      name="nomeCompleto"
-                      value={updatedData.nomeCompleto || ''}
+                      name="nome"
+                      value={updatedData.nome || ''}
                       onChange={handleInputChange}
                       disabled={!isEditing}
                     />
