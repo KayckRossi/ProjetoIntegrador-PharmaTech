@@ -26,14 +26,18 @@ function ProductList() {
       <Row>
         {products.map((product) => (
           <Col md={3} key={product.id} className="mb-4">
-            <Card className="product-card">
-              <Card.Img variant="top" src={product.imagemUrl} alt={product.nome} />
-              <Card.Body>
-                <Card.Title>{product.nome}</Card.Title>
-                <Card.Text>{product.marca}</Card.Text>
-                <Card.Text>R$ {product.preco.toFixed(2)}</Card.Text>
+            <Card className="product-card h-100">
+              <div className="product-card-img-container">
+              < Card.Img variant="top" src={product.imagemUrl} alt={product.nome} className="product-card-img"/>
+              </div>
+              <Card.Body className="d-flex flex-column justify-content-between text-center">
+                <div className="product-info">
+                  <Card.Title className="product-name">{product.nome}</Card.Title>
+                  <Card.Text className="product-brand">{product.marca}</Card.Text>
+                  <Card.Text className="product-price">R$ {product.preco.toFixed(2)}</Card.Text>
+                </div>
                 <Button
-                  variant="success"
+                  variant="success" className="mt-3"
                   onClick={() => addToCart({ ...product, quantidade: 1 })} // Adiciona o produto ao carrinho
                 >
                   +

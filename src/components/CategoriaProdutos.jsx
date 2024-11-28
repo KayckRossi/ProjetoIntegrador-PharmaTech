@@ -22,17 +22,21 @@ function CategoriaProdutos() {
 
   return (
     <Container className='product-list'>
-      <h2>Produtos da Categoria: {categoria}</h2>
-      <Row>
+      <h2 className="text-center mb-4"> Produtos da Categoria: {categoria}</h2>
+      <Row className="justify-content-center">
         {produtos.map((produto) => (
-          <Col md={3} key={produto.id} className="mb-4">
-            <Card className='product-card'>
-              <Card.Img variant="top" src={`data:image/png;base64,${produto.imagemProduto}`} alt={produto.nome} />
-              <Card.Body>
-                <Card.Title>{produto.nome}</Card.Title>
-                <Card.Text>{produto.marca}</Card.Text>
-                <Card.Text>Preço: R$ {produto.preco}</Card.Text>
-                <Button variant="success">+</Button>
+          <Col xs={12} sm={6} md={3} lg={3} key={produto.id} className="d-flex justify-content-center mb-4">
+            <Card className="product-card h-100">
+              <div className="product-card-img-container">
+              <Card.Img variant="top" src={`data:image/png;base64,${produto.imagemProduto}`} alt={produto.nome} className="product-card-img"/>
+              </div>
+              <Card.Body className="d-flex flex-column justify-content-between text-center">
+                <div className="product-info">
+                <Card.Title className="product-name">{produto.nome}</Card.Title>
+                <Card.Text className="product-brand">{produto.marca}</Card.Text>
+                <Card.Text className="product-price">Preço: R$ {produto.preco}</Card.Text>
+                </div>
+                <Button variant="success" className="mt-3">+</Button>
               </Card.Body>
             </Card>
           </Col>

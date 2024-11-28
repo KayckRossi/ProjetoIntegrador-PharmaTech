@@ -48,7 +48,7 @@ function HomePage() {
       {/* Seção de Produtos Recomendados */}
       <Row className="recommended-products mt-5">
         <Col>
-          <h3>Recomendados para você</h3>
+          <h3 className="text-center">Recomendados para você</h3>
           <ProductList />
         </Col>
       </Row>

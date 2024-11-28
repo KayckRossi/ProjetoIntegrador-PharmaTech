@@ -30,6 +30,15 @@ function Header() {
     }
   };
 
+  // Função para redirecionar ou abrir o modal de login para "Meus Pedidos"
+  const handleMeusPedidosClick = () => {
+    if (isAuthenticated) {
+      navigate('/meus-pedidos');
+    } else {
+      handleLoginOffcanvasShow(); // Mostrar o modal de login
+    }
+  };
+
   // Quantidade total de itens no carrinho
   const totalItems = cartItems.reduce((acc, item) => acc + item.quantidade, 0);
 
@@ -76,7 +85,7 @@ function Header() {
             </NavDropdown>
 
             {/* Meus Pedidos */}
-            <Nav.Link href="/meus-pedidos">
+            <Nav.Link as="div" onClick={handleMeusPedidosClick} style={{ cursor: 'pointer' }}>
               <FaRegListAlt className="nav-icon" />
               Meus Pedidos
             </Nav.Link>

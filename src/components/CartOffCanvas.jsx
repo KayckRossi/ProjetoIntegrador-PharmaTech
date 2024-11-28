@@ -48,7 +48,7 @@ function CartOffcanvas({ show, handleClose }) {
         <div className="cart-footer mt-4">
           <div className="subtotal">
             <strong>Subtotal</strong>
-            <span>R$ {calculateSubtotal().toFixed(2)}</span>
+            <span className="product-price">R$ {calculateSubtotal().toFixed(2)}</span>
           </div>
           <Button variant="success" className="w-100 mb-2" onClick={() => {handleClose(); navigate("/checkout/cart");}}>
             Ir para carrinho

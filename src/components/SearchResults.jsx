@@ -29,17 +29,22 @@ function SearchResults() {
       <Row>
         {produtosEncontrados.map((product) => (
           <Col md={3} key={product.id} className="mb-4">
-            <Card className='product-card'>
+            <Card className="product-card h-100">
+             <div className="product-card-img-container">
               <Card.Img
                 variant="top"
                 src={`data:image/png;base64,${product.imagemProduto}`} // Mostrando a imagem como Base64
                 alt={product.name}
+                className="product-card-img"
               />
-              <Card.Body>
-                <Card.Title>{product.nome}</Card.Title>
-                <Card.Text>{product.marca}</Card.Text>
-                <Card.Text><storage> R$</storage> {product.preco}</Card.Text>
-                  <Button variant="success">+</Button>
+              </div>
+              <Card.Body className="d-flex flex-column justify-content-between text-center">
+                <div className="product-info">
+                <Card.Title className="product-name">{product.nome}</Card.Title>
+                <Card.Text className="product-brand">{product.marca}</Card.Text>
+                <Card.Text className="product-price"><storage> R$</storage> {product.preco}</Card.Text>
+                </div>
+                  <Button variant="success" className="mt-3">+</Button>
               </Card.Body>
             </Card>
           </Col>
