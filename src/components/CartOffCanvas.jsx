@@ -12,7 +12,7 @@ function CartOffcanvas({ show, handleClose }) {
   return (
     <Offcanvas show={show} onHide={handleClose} placement="end" animation>
       <Offcanvas.Header closeButton>
-        <Offcanvas.Title>Cesta ({cartItems.length} itens)</Offcanvas.Title>
+        <Offcanvas.Title>Carrinho ({cartItems.length} itens)</Offcanvas.Title>
       </Offcanvas.Header>
       <Offcanvas.Body className="cart-body">
         <ListGroup variant="flush">

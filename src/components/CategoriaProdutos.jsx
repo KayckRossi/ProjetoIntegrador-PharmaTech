@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { Button, Card, Col, Container, Row } from 'react-bootstrap';
+import { useCart } from '../context/CartContext'; // Importa o contexto do carrinho
 
 function CategoriaProdutos() {
   const { categoria } = useParams();
   const [produtos, setProdutos] = useState([]);
+  const { addToCart } = useCart(); // Pega a função de adicionar ao carrinho do contexto
 
   useEffect(() => {
     const fetchProdutos = async () => {
@@ -36,7 +38,7 @@ function CategoriaProdutos() {
                 <Card.Text className="product-brand">{produto.marca}</Card.Text>
                 <Card.Text className="product-price">Preço: R$ {produto.preco}</Card.Text>
                 </div>
-                <Button variant="success" className="mt-3">+</Button>
+                <Button variant="success" className="mt-3" onClick={() => addToCart(produto)}>+</Button>
               </Card.Body>
             </Card>
           </Col>

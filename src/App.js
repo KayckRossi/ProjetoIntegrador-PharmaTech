@@ -13,6 +13,8 @@ import CheckoutPage from './pages/CheckoutPage';
 import { default as HomePage } from './pages/HomePage';
 import LoginPage from './pages/LoginPage';
 import MeusPedidos from './pages/MeusPedidosPage';
+
+
 function App() {
   return (
     <AuthProvider>

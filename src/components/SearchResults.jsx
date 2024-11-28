@@ -4,10 +4,12 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { Card, Container, Row, Col, Button } from 'react-bootstrap';
 import '../assets/styles/ProductList.scss'; 
+import { useCart } from '../context/CartContext'; // Importa o contexto do carrinho
 
 function SearchResults() {
   const { term } = useParams();
   const [produtosEncontrados, setProdutosEncontrados] = useState([]);
+  const { addToCart } = useCart(); // Pega a função de adicionar ao carrinho do contexto
 
   useEffect(() => {
     const fetchResults = async () => {
@@ -44,7 +46,7 @@ function SearchResults() {
                 <Card.Text className="product-brand">{product.marca}</Card.Text>
                 <Card.Text className="product-price"><storage> R$</storage> {product.preco}</Card.Text>
                 </div>
-                  <Button variant="success" className="mt-3">+</Button>
+                  <Button variant="success" className="mt-3" onClick={() => addToCart(product)}>+</Button>
               </Card.Body>
             </Card>
           </Col>
